@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ssm_wcmTest.iml" filepath="$PROJECT_DIR$/ssm_wcmTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_wcmTest_domain/ssm_wcmTest_domain.iml" filepath="$PROJECT_DIR$/ssm_wcmTest_domain/ssm_wcmTest_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_wcmTest_mapper/ssm_wcmTest_mapper.iml" filepath="$PROJECT_DIR$/ssm_wcmTest_mapper/ssm_wcmTest_mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_wcmTest_service/ssm_wcmTest_service.iml" filepath="$PROJECT_DIR$/ssm_wcmTest_service/ssm_wcmTest_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_wcmTest_web/ssm_wcmTest_web.iml" filepath="$PROJECT_DIR$/ssm_wcmTest_web/ssm_wcmTest_web.iml" />
+    </modules>
+  </component>
+</project>

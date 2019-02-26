@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.RoleMapper">
+    
+    
+    
+    <resultMap id="roleMap" type="role">
+        <id property="id" column="id"/>
+        <collection property="permissions" ofType="permission"
+                    select="com.itheima.mapper.PermissionMapper.findRoleId"
+                    column="id" fetchType="lazy"/>
+
+    </resultMap>
+    <!--根据订单查询联系人-->
+
+    <!-- 根据订单表中产品的id到产品表查询对应的联系人-->
+    <select id="findRolesByUid" resultMap="roleMap" parameterType="string">
+        SELECT *  FROM ROLE WHERE ID IN (SELECT ROLEID FROM USERS_ROLE WHERE USERID=#{uid})
+    </select>
+    <!--查询所有角色-->
+    <select id="findAll" resultMap="roleMap">
+        SELECT * FROM ROLE
+    </select>
+
+    <select id="findRoleAll" resultMap="roleMap">
+        SELECT * FROM ROLE
+    </select>
+
+
+
+
+
+</mapper>

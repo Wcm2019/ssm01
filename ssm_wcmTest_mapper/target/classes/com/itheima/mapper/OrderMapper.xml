@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.OrderMapper">
+
+    <resultMap id="findByIdMapper" type="orders">
+        <id property="id" column="id"/>
+        <!--根据订单表中member查询member-->
+        <association property="member" javaType="member" fetchType="lazy" column="memberId"
+                     select="com.itheima.mapper.MemberMapper.findMemberById"/>
+
+        <association property="product" javaType="product" fetchType="lazy" column="productId"
+                     select="com.itheima.mapper.ProductMapper.findProductById"/>
+
+        <association property="travellers" javaType="traveller" fetchType="lazy" column="travellerId"
+                     select="com.itheima.mapper.TravellerMapper.findTravellerById"/>
+
+    </resultMap>
+
+    <select id="findById" parameterType="string" resultMap="findByIdMapper">
+        SELECT *  FROM ORDERS WHERE id=#{id}
+
+    </select>
+
+
+    <resultMap id="findAll" type="orders">
+        <id property="id" column="id"/>
+        <association property="product" javaType="product" fetchType="lazy" column="productId"
+                     select="com.itheima.mapper.ProductMapper.findProductById"/>
+    </resultMap>
+    <select id="findAll" parameterType="string" resultMap="findAll">
+        SELECT *  FROM ORDERS
+        <where>
+            <if test="value!=null  and  value.length>0">
+               and orderNum LIKE '%${value}%'
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

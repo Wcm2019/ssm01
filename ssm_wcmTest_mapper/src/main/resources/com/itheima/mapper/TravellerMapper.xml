@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.TravellerMapper">
+    <!--根据订单查询联系人-->
+
+    <!-- 根据订单表中产品的id到产品表查询对应的游客信息-->
+    <select id="findTravellerById" resultType="traveller" parameterType="string">
+       select  * from traveller where id in( select  travellerId from orders,order_traveller where orders.id = order_traveller.orderid)
+    </select>
+
+</mapper>

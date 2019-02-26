@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.ProductMapper">
+   <!-- 根据订单表中产品的id到产品表查询对应的产品信息-->
+    <select id="findProductById" resultType="product" parameterType="string">
+        SELECT *  FROM PRODUCT WHERE id=#{id}
+
+    </select>
+
+
+    <select id="findAll" resultType="product" >
+        SELECT *  FROM PRODUCT
+    </select>
+
+   <!-- <select id="findAll"   parameterType="string" resultType="product">
+        SELECT *  FROM PRODUCT
+        <where>
+            <if test="value != null and value.length">
+                id = #{id}
+            </if>
+        </where>
+    </select>-->
+
+
+    <insert id="save" parameterType="product">
+        INSERT INTO PRODUCT (productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus)
+        VALUES (#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})
+    </insert>
+
+
+    <delete id="delete" parameterType="list">
+        DELETE FROM PRODUCT
+        <where>
+            <if test="array !=null and array.length>0">
+                <foreach collection="array" open="id in(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+  <!--<select id="findBySerach" parameterType="product" resultType="product">
+        SELECT *  FROM PRODUCT
+        <where>
+            <if test="">
+                cityName  LIKE "%"#{cityName}"%"
+            </if>
+        </where>
+    </select>-->
+</mapper>
